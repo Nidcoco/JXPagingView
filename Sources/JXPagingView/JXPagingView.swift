@@ -141,7 +141,7 @@ open class JXPagingView: UIView {
         }
     }
 
-    open func reloadData() {
+    open func reloadData(isLimit: Bool = true) {
         currentList = nil
         currentScrollingListView = nil
         validListDict.removeAll()
@@ -161,7 +161,7 @@ open class JXPagingView: UIView {
             }
         }
         refreshTableHeaderView()
-        if pinSectionHeaderVerticalOffset != 0 && mainTableView.contentOffset.y > CGFloat(pinSectionHeaderVerticalOffset) {
+        if pinSectionHeaderVerticalOffset != 0 && mainTableView.contentOffset.y > CGFloat(pinSectionHeaderVerticalOffset) && isLimit {
             mainTableView.contentOffset = .zero
         }
         mainTableView.reloadData()
